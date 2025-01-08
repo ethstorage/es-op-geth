@@ -106,6 +106,9 @@ type Config struct {
 	// field is empty, no HTTP API endpoint will be started.
 	HTTPHost string
 
+	HTTPSGTHost string
+	HTTPSGTPort int `toml:",omitempty"`
+
 	// HTTPPort is the TCP port number on which to start the HTTP RPC server. The
 	// default zero value is/ valid and will pick a port number randomly (useful
 	// for ephemeral nodes).

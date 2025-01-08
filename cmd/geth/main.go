@@ -180,8 +180,11 @@ var (
 
 	rpcFlags = []cli.Flag{
 		utils.HTTPEnabledFlag,
+		utils.HTTPSGTEnabledFlag,
 		utils.HTTPListenAddrFlag,
+		utils.HTTPSGTListenAddrFlag,
 		utils.HTTPPortFlag,
+		utils.HTTPSGTPortFlag,
 		utils.HTTPCORSDomainFlag,
 		utils.AuthListenFlag,
 		utils.AuthPortFlag,

@@ -675,16 +675,33 @@ var (
 		Usage:    "Enable the HTTP-RPC server",
 		Category: flags.APICategory,
 	}
+	HTTPSGTEnabledFlag = &cli.BoolFlag{
+		Name:     "httpsgt",
+		Usage:    "Enable the HTTP-RPC server for Soul Gas Token",
+		Category: flags.APICategory,
+	}
 	HTTPListenAddrFlag = &cli.StringFlag{
 		Name:     "http.addr",
 		Usage:    "HTTP-RPC server listening interface",
 		Value:    node.DefaultHTTPHost,
 		Category: flags.APICategory,
 	}
+	HTTPSGTListenAddrFlag = &cli.StringFlag{
+		Name:     "httpsgt.addr",
+		Usage:    "HTTP-RPC server listening interface for Soul Gas Token",
+		Value:    node.DefaultHTTPSGTHost,
+		Category: flags.APICategory,
+	}
 	HTTPPortFlag = &cli.IntFlag{
 		Name:     "http.port",
 		Usage:    "HTTP-RPC server listening port",
 		Value:    node.DefaultHTTPPort,
+		Category: flags.APICategory,
+	}
+	HTTPSGTPortFlag = &cli.IntFlag{
+		Name:     "httpsgt.port",
+		Usage:    "HTTP-RPC server listening port for Soul Gas Token",
+		Value:    node.DefaultHTTPSGTPort,
 		Category: flags.APICategory,
 	}
 	HTTPCORSDomainFlag = &cli.StringFlag{
@@ -1271,9 +1288,19 @@ func setHTTP(ctx *cli.Context, cfg *node.Config) {
 			cfg.HTTPHost = ctx.String(HTTPListenAddrFlag.Name)
 		}
 	}
+	if ctx.Bool(HTTPSGTEnabledFlag.Name) {
+		if ctx.IsSet(HTTPSGTListenAddrFlag.Name) {
+			cfg.HTTPSGTHost = ctx.String(HTTPSGTListenAddrFlag.Name)
+		} else if cfg.HTTPSGTHost == "" {
+			cfg.HTTPSGTHost = "127.0.0.1"
+		}
+	}
 
 	if ctx.IsSet(HTTPPortFlag.Name) {
 		cfg.HTTPPort = ctx.Int(HTTPPortFlag.Name)
+	}
+	if ctx.IsSet(HTTPSGTPortFlag.Name) {
+		cfg.HTTPSGTPort = ctx.Int(HTTPSGTPortFlag.Name)
 	}
 
 	if ctx.IsSet(AuthListenFlag.Name) {
