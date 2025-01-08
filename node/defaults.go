@@ -59,6 +59,7 @@ var (
 var DefaultConfig = Config{
 	DataDir:              DefaultDataDir(),
 	HTTPPort:             DefaultHTTPPort,
+	HTTPSGTPort:          DefaultHTTPSGTPort,
 	AuthAddr:             DefaultAuthHost,
 	AuthPort:             DefaultAuthPort,
 	AuthVirtualHosts:     DefaultAuthVhosts,
