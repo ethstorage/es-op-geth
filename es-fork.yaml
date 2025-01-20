@@ -1,4 +1,4 @@
-title: "op-geth - go-ethereum fork diff overview"
+title: "SWC-op-geth - official-op-geth fork diff overview"
 footer: |
   Fork-diff overview of [`SWC op-geth`](https://github.com/ethstorage/op-geth), a fork of [`official op-geth`](https://github.com/ethereum-optimism/op-geth).
   and execution-engine of the [SWC OP-stack](https://github.com/ethstorage/optimism).
