@@ -1108,6 +1108,7 @@ type Rules struct {
 	IsOptimismCanyon, IsOptimismFjord                       bool
 	IsOptimismGranite, IsOptimismHolocene                   bool
 	IsOptimismIsthmus                                       bool
+	IsEthStorage                                            bool
 }
 
 // Rules ensures c's ChainID is not nil.

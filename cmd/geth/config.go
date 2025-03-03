@@ -43,6 +43,7 @@ import (
 	"github.com/ethereum/go-ethereum/log"
 	"github.com/ethereum/go-ethereum/metrics"
 	"github.com/ethereum/go-ethereum/node"
+	"github.com/ethereum/go-ethereum/params"
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/naoina/toml"
 	"github.com/urfave/cli/v2"
@@ -266,6 +267,10 @@ func makeFullNode(ctx *cli.Context) *node.Node {
 			utils.Fatalf("invalid sync target length: have %d, want %d", len(hex), common.HashLength)
 		}
 		utils.RegisterFullSyncTester(stack, eth, common.BytesToHash(hex))
+	}
+
+	if ctx.IsSet(utils.EsURLFlag.Name) {
+		params.EsNodeURL = ctx.String(utils.EsURLFlag.Name)
 	}
 
 	if ctx.IsSet(utils.DeveloperFlag.Name) {
